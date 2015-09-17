@@ -22,7 +22,7 @@ use Symfony\Component\Serializer\Serializer;
 
 try {
     $client = new Client(
-        'https://engineblock:do8He2KKd6m1@serviceregistry.test.surfconext.nl/janus/app.php/api',
+        'https://engineblock:engineblock@serviceregistry.demo.openconext.org/janus/app.php/api',
         array(
             'headers' => array(
                 'User-Agent' => 'Demo - Janus Client v1.0 (https://github.com/janus-ssp/janus-client)',
