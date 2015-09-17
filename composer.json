@@ -1,0 +1,24 @@
+{
+    "name": "janus-ssp/client",
+    "description": "PHP Client for accessing Janus REST API",
+    "require": {
+        "guzzle/guzzle": "~3.9",
+        "psr/log": "~1.0",
+        "monolog/monolog": "^1.17",
+        "symfony/serializer": "~2.6.11",
+        "thewilkybarkid/date-time-immutable": "~1.0"
+    },
+    "suggest": {
+        "monolog/monolog": "psr/log implementation"
+    },
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Boy Baukema",
+            "email": "boy@ibuildings.nl"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"OpenConext\\JanusClient\\": "src/"}
+    }
+}
