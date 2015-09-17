@@ -1,4 +1,9 @@
 <?php
+/**
+ * Example of Janus Client usage.
+ *
+ * Note that this requires that you install monolog/monolog as a logger implementation.
+ */
 
 require __DIR__ . '/../vendor/autoload.php';
 
