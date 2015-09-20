@@ -7,12 +7,15 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
+ini_set('xdebug.var_display_max_depth', 5);
 date_default_timezone_set('Europe/Amsterdam');
 
 use Guzzle\Http\Client;
 use Guzzle\Http\Exception\BadResponseException;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
+use OpenConext\JanusClient\ArpAttributes;
+use OpenConext\JanusClient\ConnectionAccess;
 use OpenConext\JanusClient\Entity\Assembler\ConnectionDescriptorAssembler;
 use OpenConext\JanusClient\Entity\Connection;
 use OpenConext\JanusClient\Entity\Assembler\ConnectionAssembler;
@@ -102,7 +105,12 @@ try {
             
             'AssertionConsumerService:0:Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
         ),
-        'https://example.org/sp/metadata'
+        'https://example.org/sp/metadata',
+        '',
+        new ConnectionAccess(),
+        new ArpAttributes(array(
+            'urn:mace:dir:attribute-def:eduPersonAffiliation' => array('*'),
+        ))
     );
     $connection->disableConsentFor($mockIdpDescriptor);
     $connection->deactivate();

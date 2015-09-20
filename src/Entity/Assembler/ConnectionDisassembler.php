@@ -30,6 +30,7 @@ final class ConnectionDisassembler
         $dto->metadataUrl = $connection->getMetadataUrl();
         $dto->manipulationCode = $connection->getManipulationCode();
         $dto->metadata = $this->expand($connection->getAllMetadata());
+        $dto->arpAttributes = $connection->getArpAttributes()->toArray();
         $dto->disableConsentConnections = $this->disassembleReferences($connection->getConsentDisabledConnections());
         $dto->allowedConnections        = $this->disassembleReferences($connection->getAccess()->getAllowedConnections());
         $dto->blockedConnections        = $this->disassembleReferences($connection->getAccess()->getBlockedConnections());

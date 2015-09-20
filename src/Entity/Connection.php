@@ -3,6 +3,7 @@
 namespace OpenConext\JanusClient\Entity;
 
 use DateTimeImmutable;
+use OpenConext\JanusClient\ArpAttributes;
 use OpenConext\JanusClient\ConnectionAccess;
 use OpenConext\JanusClient\ConnectionRevision;
 
@@ -55,12 +56,14 @@ final class Connection extends ConnectionDescriptor
      * @param array $metadata
      * @param string $metadataUrl
      * @param string $manipulationCode
-     * @param DateTimeImmutable $createdDate
-     * @param DateTimeImmutable $updatedAtDate
+     * @param ConnectionAccess $access
+     * @param ArpAttributes $arpAttributes
+     * @param array $consentDisabledConnections
      * @param bool $isActive
      * @param string $id
      * @param ConnectionRevision $revision
-     * @param ConnectionAccess $access
+     * @param DateTimeImmutable $createdDate
+     * @param DateTimeImmutable $updatedAtDate
      */
     public function __construct(
         $name,
@@ -70,6 +73,7 @@ final class Connection extends ConnectionDescriptor
         $metadataUrl,
         $manipulationCode = '',
         ConnectionAccess $access = NULL,
+        ArpAttributes $arpAttributes = NULL,
         $consentDisabledConnections = array(),
         $isActive = TRUE,
         $id = NULL,
@@ -96,6 +100,8 @@ final class Connection extends ConnectionDescriptor
             $access = new ConnectionAccess();
         }
         $this->access = $access;
+
+        $this->arpAttributes = $arpAttributes;
 
         $this->consentDisabledConnections = $consentDisabledConnections;
 
@@ -203,6 +209,14 @@ final class Connection extends ConnectionDescriptor
     public function getAccess()
     {
         return $this->access;
+    }
+
+    /**
+     * @return ArpAttributes
+     */
+    public function getArpAttributes()
+    {
+        return $this->arpAttributes;
     }
 
     /**

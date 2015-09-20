@@ -3,6 +3,7 @@
 namespace OpenConext\JanusClient\Entity\Assembler;
 
 use DateTimeImmutable;
+use OpenConext\JanusClient\ArpAttributes;
 use OpenConext\JanusClient\ConnectionAccess;
 use OpenConext\JanusClient\ConnectionRevision;
 use OpenConext\JanusClient\Dto\ConnectionDto;
@@ -29,6 +30,7 @@ final class ConnectionAssembler
                 $this->makeReferences($dto->allowedConnections),
                 $this->makeReferences($dto->blockedConnections)
             ),
+            new ArpAttributes($dto->arpAttributes),
             $this->makeReferences($dto->disableConsentConnections),
             $dto->isActive,
             $dto->id,

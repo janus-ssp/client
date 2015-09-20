@@ -52,6 +52,11 @@ class ConnectionDto extends ConnectionDescriptorDto
     public $updatedAtDate;
 
     /**
+     * @var array<string,array<string>>
+     */
+    public $arpAttributes;
+
+    /**
      * @var array
      */
     public $metadata;
