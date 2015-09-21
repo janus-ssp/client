@@ -12,6 +12,10 @@ use OpenConext\JanusClient\ResponseStatusCodeValidator;
 use RuntimeException;
 use Symfony\Component\Serializer\Serializer;
 
+/**
+ * Class ConnectionRepository
+ * @package OpenConext\JanusClient\Entity
+ */
 final class ConnectionRepository
 {
     private $HEADERS = array(
@@ -83,7 +87,7 @@ final class ConnectionRepository
             $response = $request->send();
         } catch (BadResponseException $e) {
             if ($e->getResponse()->getStatusCode() === 404) {
-                return NULL;
+                return null;
             }
             throw $e;
         }
@@ -94,6 +98,10 @@ final class ConnectionRepository
     }
 
 
+    /**
+     * @param $id
+     * @return Connection
+     */
     public function fetchById($id)
     {
         $connection = $this->findById($id);
@@ -106,7 +114,7 @@ final class ConnectionRepository
     }
 
     /**
-     * @param Connection $newRevision
+     * @param NewConnectionRevision $newRevision
      * @return Connection
      */
     public function insert(NewConnectionRevision $newRevision)
@@ -195,6 +203,10 @@ final class ConnectionRepository
         return $this->serializer->serialize($dto, 'json');
     }
 
+    /**
+     * @param string $id
+     * @return string
+     */
     private function getConnectionUrl($id)
     {
         return '/connections/' . $id;

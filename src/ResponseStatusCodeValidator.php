@@ -7,6 +7,10 @@ use Guzzle\Http\Message\Response;
 use Psr\Log\LoggerInterface;
 use RuntimeException;
 
+/**
+ * Class ResponseStatusCodeValidator
+ * @package OpenConext\JanusClient
+ */
 final class ResponseStatusCodeValidator
 {
     /**
@@ -23,8 +27,18 @@ final class ResponseStatusCodeValidator
         $this->logger = $logger;
     }
 
-    public function validate($statusCode, $url, RequestInterface $request, Response $response)
-    {
+    /**
+     * @param $statusCode
+     * @param $url
+     * @param RequestInterface $request
+     * @param Response $response
+     */
+    public function validate(
+        $statusCode,
+        $url,
+        RequestInterface $request,
+        Response $response
+    ) {
         if ($response->getStatusCode() === $statusCode) {
             return;
         }

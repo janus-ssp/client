@@ -7,6 +7,10 @@ use OpenConext\JanusClient\ArpAttributes;
 use OpenConext\JanusClient\ConnectionAccess;
 use OpenConext\JanusClient\ConnectionRevision;
 
+/**
+ * Class Connection
+ * @package OpenConext\JanusClient\Entity
+ */
 final class Connection extends ConnectionDescriptor
 {
     /**
@@ -72,20 +76,19 @@ final class Connection extends ConnectionDescriptor
         array $metadata,
         $metadataUrl,
         $manipulationCode = '',
-        ConnectionAccess $access = NULL,
-        ArpAttributes $arpAttributes = NULL,
+        ConnectionAccess $access = null,
+        ArpAttributes $arpAttributes = null,
         $consentDisabledConnections = array(),
-        $isActive = TRUE,
-        $id = NULL,
-        ConnectionRevision $revision = NULL,
-        DateTimeImmutable $createdDate = NULL,
-        DateTimeImmutable $updatedAtDate = NULL
-    )
-    {
+        $isActive = true,
+        $id = null,
+        ConnectionRevision $revision = null,
+        DateTimeImmutable $createdDate = null,
+        DateTimeImmutable $updatedAtDate = null
+    ) {
         parent::__construct(
             $id,
             $name,
-            $revision ? $revision->getRevisionNr() : NULL,
+            $revision ? $revision->getRevisionNr() : null,
             $state,
             $type,
             $isActive
@@ -118,6 +121,10 @@ final class Connection extends ConnectionDescriptor
         $this->updatedAtDate = $updatedAtDate;
     }
 
+    /**
+     * @param string $newName
+     * @return $this
+     */
     public function rename($newName)
     {
         $this->name = $newName;
@@ -126,15 +133,28 @@ final class Connection extends ConnectionDescriptor
         return $this;
     }
 
-    public function getAllMetadata() {
+    /**
+     * @return array
+     */
+    public function getAllMetadata()
+    {
         return $this->metadata;
     }
 
+    /**
+     * @param $key
+     * @return bool
+     */
     public function hasMetadata($key)
     {
         return isset($this->metadata[$key]);
     }
 
+    /**
+     * @param $key
+     * @param null $default
+     * @return null
+     */
     public function getMetadata($key, $default = null)
     {
         if (!isset($this->metadata[$key])) {
@@ -143,6 +163,11 @@ final class Connection extends ConnectionDescriptor
         return $this->metadata[$key];
     }
 
+    /**
+     * @param $key
+     * @param $value
+     * @return $this
+     */
     public function setMetadata($key, $value)
     {
         if (isset($this->metadata[$key]) && $this->metadata[$key] === $value) {
@@ -155,6 +180,10 @@ final class Connection extends ConnectionDescriptor
         return $this;
     }
 
+    /**
+     * @param ConnectionReference $connection
+     * @return $this
+     */
     public function disableConsentFor(ConnectionReference $connection)
     {
         $this->updatedAtDate = new DateTimeImmutable();
@@ -163,6 +192,9 @@ final class Connection extends ConnectionDescriptor
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function activate()
     {
         $this->isActive = true;
@@ -171,6 +203,9 @@ final class Connection extends ConnectionDescriptor
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function deactivate()
     {
         $this->isActive = false;
@@ -179,6 +214,10 @@ final class Connection extends ConnectionDescriptor
         return $this;
     }
 
+    /**
+     * @param $code
+     * @return $this
+     */
     public function manipulate($code)
     {
         $this->manipulationCode = $code;
@@ -187,6 +226,9 @@ final class Connection extends ConnectionDescriptor
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function acceptForProduction()
     {
         $this->state = static::WORKFLOW_PROD;

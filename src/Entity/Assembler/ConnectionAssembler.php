@@ -10,6 +10,10 @@ use OpenConext\JanusClient\Dto\ConnectionDto;
 use OpenConext\JanusClient\Entity\Connection;
 use OpenConext\JanusClient\Entity\ConnectionReference;
 
+/**
+ * Class ConnectionAssembler
+ * @package OpenConext\JanusClient\Entity\Assembler
+ */
 final class ConnectionAssembler
 {
     /**
@@ -46,6 +50,11 @@ final class ConnectionAssembler
         );
     }
 
+    /**
+     * @param array $metadata
+     * @param string $prefix
+     * @return array
+     */
     private function flattenMetadata(array $metadata, $prefix = '')
     {
         if (!empty($prefix)) {
@@ -55,15 +64,21 @@ final class ConnectionAssembler
         $newValues = array();
         foreach ($metadata as $key => $value) {
             if (is_array($value)) {
-                $newValues = array_merge($newValues, $this->flattenMetadata($value, $prefix . $key));
-            }
-            else {
+                $newValues = array_merge(
+                    $newValues,
+                    $this->flattenMetadata($value, $prefix . $key)
+                );
+            } else {
                 $newValues[$prefix . $key] = $value;
             }
         }
         return $newValues;
     }
 
+    /**
+     * @param array $connections
+     * @return array
+     */
     private function makeReferences(array $connections)
     {
         $references = array();

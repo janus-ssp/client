@@ -7,10 +7,14 @@ use OpenConext\JanusClient\Dto\ConnectionDto;
 use OpenConext\JanusClient\Entity\Connection;
 use OpenConext\JanusClient\Entity\ConnectionDescriptor;
 
+/**
+ * Class ConnectionDescriptorAssembler
+ * @package OpenConext\JanusClient\Entity\Assembler
+ */
 final class ConnectionDescriptorAssembler
 {
     /**
-     * @param ConnectionDto $dto
+     * @param ConnectionDescriptorDto $dto
      * @return Connection
      */
     public function assemble(ConnectionDescriptorDto $dto)

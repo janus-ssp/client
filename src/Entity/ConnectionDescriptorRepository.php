@@ -11,6 +11,10 @@ use Psr\Log\LoggerInterface;
 use RuntimeException;
 use Symfony\Component\Serializer\Serializer;
 
+/**
+ * Class ConnectionDescriptorRepository
+ * @package OpenConext\JanusClient\Entity
+ */
 final class ConnectionDescriptorRepository
 {
     /**
@@ -52,8 +56,7 @@ final class ConnectionDescriptorRepository
         ConnectionDescriptorAssembler $assembler,
         Serializer $serializer,
         ResponseStatusCodeValidator $statusCodeValidator
-    )
-    {
+    ) {
         $this->client = $client;
         $this->logger = $logger;
         $this->assembler = $assembler;
@@ -83,7 +86,7 @@ final class ConnectionDescriptorRepository
         }
 
         if (count($connections) === 0) {
-            return NULL;
+            return null;
         }
 
         return $connections[0];

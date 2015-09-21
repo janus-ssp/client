@@ -8,10 +8,14 @@ use OpenConext\JanusClient\Entity\Connection;
 use OpenConext\JanusClient\Entity\ConnectionReference;
 use OpenConext\JanusClient\NewConnectionRevision;
 
+/**
+ * Class ConnectionDisassembler
+ * @package OpenConext\JanusClient\Entity\Assembler
+ */
 final class ConnectionDisassembler
 {
     /**
-     * @param Connection $newRevision
+     * @param NewConnectionRevision $newRevision
      * @return ConnectionDto
      */
     public function disassemble(NewConnectionRevision $newRevision)
@@ -31,9 +35,15 @@ final class ConnectionDisassembler
         $dto->manipulationCode = $connection->getManipulationCode();
         $dto->metadata = $this->expand($connection->getAllMetadata());
         $dto->arpAttributes = $connection->getArpAttributes()->toArray();
-        $dto->disableConsentConnections = $this->disassembleReferences($connection->getConsentDisabledConnections());
-        $dto->allowedConnections        = $this->disassembleReferences($connection->getAccess()->getAllowedConnections());
-        $dto->blockedConnections        = $this->disassembleReferences($connection->getAccess()->getBlockedConnections());
+        $dto->disableConsentConnections = $this->disassembleReferences(
+            $connection->getConsentDisabledConnections()
+        );
+        $dto->allowedConnections        = $this->disassembleReferences(
+            $connection->getAccess()->getAllowedConnections()
+        );
+        $dto->blockedConnections        = $this->disassembleReferences(
+            $connection->getAccess()->getBlockedConnections()
+        );
         $dto->allowAllEntities = $connection->getAccess()->isAllowAll();
         $dto->createdAtDate = $connection->getCreatedDate()->format('c');
         $dto->updatedAtDate = $connection->getUpdatedAtDate()->format('c');

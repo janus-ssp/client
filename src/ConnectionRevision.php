@@ -2,7 +2,12 @@
 
 namespace OpenConext\JanusClient;
 
-final class ConnectionRevision {
+/**
+ * Class ConnectionRevision
+ * @package OpenConext\JanusClient
+ */
+final class ConnectionRevision
+{
     /**
      * @var string
      */
@@ -42,8 +47,7 @@ final class ConnectionRevision {
         $parentRevisionNr,
         $updatedByUserName,
         $updatedFromIp
-    )
-    {
+    ) {
         $this->revisionNote = $revisionNote;
         $this->revisionNr = $revisionNr;
         $this->parentRevisionNr = $parentRevisionNr;

@@ -2,6 +2,10 @@
 
 namespace OpenConext\JanusClient\Entity;
 
+/**
+ * Class ConnectionDescriptor
+ * @package OpenConext\JanusClient\Entity
+ */
 class ConnectionDescriptor extends ConnectionReference
 {
     const TYPE_SP = 'saml20-sp';
@@ -44,8 +48,7 @@ class ConnectionDescriptor extends ConnectionReference
         $state,
         $type,
         $isActive
-    )
-    {
+    ) {
         parent::__construct($id, $name);
         $this->revisionNr = (int) $revisionNr;
 

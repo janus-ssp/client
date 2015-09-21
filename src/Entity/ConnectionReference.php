@@ -2,6 +2,10 @@
 
 namespace OpenConext\JanusClient\Entity;
 
+/**
+ * Class ConnectionReference
+ * @package OpenConext\JanusClient\Entity
+ */
 class ConnectionReference {
   /**
    * @var int

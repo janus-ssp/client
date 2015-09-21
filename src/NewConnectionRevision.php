@@ -4,6 +4,10 @@ namespace OpenConext\JanusClient;
 
 use OpenConext\JanusClient\Entity\Connection;
 
+/**
+ * Class NewConnectionRevision
+ * @package OpenConext\JanusClient
+ */
 final class NewConnectionRevision
 {
     /**
@@ -18,7 +22,8 @@ final class NewConnectionRevision
 
     /**
      * NewConnectionRevision constructor.
-     * @param $revisionNote
+     * @param Connection $connection
+     * @param string $revisionNote
      */
     public function __construct(Connection $connection, $revisionNote = '')
     {

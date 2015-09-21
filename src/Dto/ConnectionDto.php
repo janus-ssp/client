@@ -2,6 +2,10 @@
 
 namespace OpenConext\JanusClient\Dto;
 
+/**
+ * Class ConnectionDto
+ * @package OpenConext\JanusClient\Dto
+ */
 class ConnectionDto extends ConnectionDescriptorDto
 {
     const CLASS_NAME = 'OpenConext\\JanusClient\\Dto\\ConnectionDto';

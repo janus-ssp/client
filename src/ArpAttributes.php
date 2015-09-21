@@ -2,6 +2,10 @@
 
 namespace OpenConext\JanusClient;
 
+/**
+ * Class ArpAttributes
+ * @package OpenConext\JanusClient
+ */
 class ArpAttributes
 {
     const WILDCARD = '*';
@@ -17,11 +21,20 @@ class ArpAttributes
         $this->attibuteValues = $attibuteValues;
     }
 
+    /**
+     * @param $attributeName
+     * @return mixed
+     */
     public function getAttributeAllowedValues($attributeName)
     {
         return $this->attibuteValues[$attributeName];
     }
 
+    /**
+     * @param $attributeName
+     * @param $attributeValue
+     * @return $this
+     */
     public function setAttributeValue($attributeName, $attributeValue)
     {
         if (!isset($this->attibuteValues[$attributeName])) {
@@ -33,6 +46,9 @@ class ArpAttributes
         return $this;
     }
 
+    /**
+     * @return array
+     */
     public function toArray()
     {
         return $this->attibuteValues;
