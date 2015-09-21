@@ -130,8 +130,16 @@ final class Connection extends ConnectionDescriptor
         return $this->metadata;
     }
 
-    public function getMetadata($key)
+    public function hasMetadata($key)
     {
+        return isset($this->metadata[$key]);
+    }
+
+    public function getMetadata($key, $default = null)
+    {
+        if (!isset($this->metadata[$key])) {
+            return $default;
+        }
         return $this->metadata[$key];
     }
 
