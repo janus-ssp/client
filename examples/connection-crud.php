@@ -50,15 +50,26 @@ try {
     $statusCodeValidator = new ResponseStatusCodeValidator($logger);
 
     $descriptorAssembler = new ConnectionDescriptorAssembler();
-    $descriptorRepository = new ConnectionDescriptorRepository($client, $logger, $descriptorAssembler, $serializer, $statusCodeValidator);
+    $descriptorRepository = new ConnectionDescriptorRepository(
+        $client,
+        $logger,
+        $descriptorAssembler,
+        $serializer,
+        $statusCodeValidator
+    );
 
     $assembler = new ConnectionAssembler();
     $disassembler = new ConnectionDisassembler();
-    $repository = new ConnectionRepository($client, $assembler, $disassembler, $serializer, $statusCodeValidator);
+    $repository = new ConnectionRepository(
+        $client,
+        $assembler,
+        $disassembler,
+        $serializer,
+        $statusCodeValidator
+    );
 
     print 'All connections in the repository' . PHP_EOL;
     var_dump($descriptorRepository->findAll());
-
 
     print 'A single full connection' . PHP_EOL;
     $mockIdpDescriptor = $descriptorRepository->fetchByName('http://mock-idp');
