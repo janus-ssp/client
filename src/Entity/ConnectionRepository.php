@@ -62,8 +62,7 @@ final class ConnectionRepository
         ConnectionDisassembler $disassembler,
         Serializer $serializer,
         ResponseStatusCodeValidator $statusCodeValidator
-    )
-    {
+    ) {
         $this->client = $client;
         $this->assembler = $assembler;
         $this->disassembler = $disassembler;

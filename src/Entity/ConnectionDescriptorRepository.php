@@ -94,7 +94,7 @@ final class ConnectionDescriptorRepository
 
     /**
      * @param $name
-     * @return Connection
+     * @return ConnectionDescriptor
      */
     public function fetchByName($name)
     {
