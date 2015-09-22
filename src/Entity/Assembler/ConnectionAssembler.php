@@ -34,7 +34,7 @@ final class ConnectionAssembler
                 $this->makeReferences($dto->allowedConnections),
                 $this->makeReferences($dto->blockedConnections)
             ),
-            new ArpAttributes($dto->arpAttributes),
+            $dto->arpAttributes ? new ArpAttributes($dto->arpAttributes) : null,
             $this->makeReferences($dto->disableConsentConnections),
             $dto->isActive,
             $dto->id,
