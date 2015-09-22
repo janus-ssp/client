@@ -70,6 +70,9 @@ final class ConnectionDescriptorRepository
      */
     public function findByName($name)
     {
+        if (empty($name)) {
+            throw new RuntimeException("findByName with empty name forbidden");
+        }
         $url = $this->getConnectionsUrl($name);
         $request = $this->client->get(
             $this->client->getBaseUrl() . $url
