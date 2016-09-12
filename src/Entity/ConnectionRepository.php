@@ -90,6 +90,9 @@ final class ConnectionRepository
             }
             throw $e;
         }
+        if ($response->getStatusCode() === 404) {
+            return null;
+        }
 
         $this->statusCodeValidator->validate(200, $url, $request, $response);
 
